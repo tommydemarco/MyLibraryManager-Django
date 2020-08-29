@@ -1,0 +1,93 @@
+<!-- loading the static files -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- TITLE BLOCK -->
+    {% block title %}
+    {% endblock %}
+
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--::::: ALL CSS FILES :::::::-->
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css"%}">
+
+	<!-- my master CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css"%}">
+
+</head>
+
+<body id="body">
+
+<!-- navigation -->
+<nav id="main-navigation" class="navbar navbar-expand-lg navbar-light bg-white static-top mb-5 shadow">
+  <div class="container">
+    <a id="logo" class="navbar-brand" href=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Add new employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Add new field</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Contact support</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+  {% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+			{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+    <!-- block content -->
+    {% block content %}
+    {% endblock %}
+    
+  </div>
+</div>
+
+
+
+
+<!-- footer -->
+<footer>
+    <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Home</a></li>
+        <li class="list-inline-item"><a href="#">Services</a></li>
+        <li class="list-inline-item"><a href="#">About</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+    </ul>
+    <p class="copyright">Company Name © 2018</p>
+</footer>
+
+  
+<!-- loading the JS files -->
+<script src="{% static "js/jquery.min.js"%}"></script>
+<script src="{% static "js/bootstrap.bundle.min.js"%}"></script>
+<script src="{% static "js/main.js"%}"></script>
+
+</body>
