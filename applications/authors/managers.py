@@ -13,13 +13,20 @@ class AuthorManager(models.Manager):
     #search by name function
     def search_author_by_name(self, keyword):
         #using icontains to get the similar results 
+
         #(actually looking for the surname as well with the or and the Q functions)
+        # search_result_name = self.filter(
+        #     Q(author_name__icontains=keyword) | Q(author_surname__icontains=keyword)
+        #     )
+
         search_result_name = self.filter(
-            Q(author_name__icontains=keyword) or Q(author_surname__icontains=keyword)
-            )
+            author_name__icontains=keyword
+            ).order_by('author_name')
+            #.exclude(author_age<35)   //would exclude according to the filter
+
         return search_result_name
 
     #search by surname function
     def search_author_by_surname(self, keyword):
-        search_result_surname = self.filter(author_surname__icontains=keyword)
+        search_result_surname = self.filter(author_surname__icontains=keyword).order_by('author_name')
         return search_result_surname

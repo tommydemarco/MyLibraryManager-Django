@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Books list</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">Books</h1>
+            </div>
+            <div class="row mt-4">
+                <div class="intro col-md-6">
+                    <h5 class="text-left mb-3">Search book by publishing date range</h5>
+                    <form method="GET">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="date" id="date1" name="date1" placeholder="Insert first date">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="date" id="date2" name="date2" placeholder="Insert second date">
+                            </div>
+                        </div>
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="intro col-md-6">
+                    <h5 class="text-left mb-3">Search book by category</h5>
+                    <form method="GET">
+                        {% csrf_token %}
+                        <select class="form-control">
+                            <option class="form-control" id="category" name="category">Select a genere</option>
+                            {% for category in categories %}
+                            <option class="form-control" id="category" name="category">{{category}}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row people">
+                <!-- looping through the books -->
+                {% if books.count > 0 %}
+                    {% for book in books %}
+
+                    <div class="col-md-6 col-lg-4 item">
+                        <div class="box"><img class="rounded-circle" src="">
+                            <h3 class="name">{{book.book_title}}</h3>
+                            <p class="title">{{book.book_category}}</p>
+                            <p class="p1-box"> 
+                                Author: 
+                                {% for author in book.book_authors.all %}
+                                    <b>{{author}}</b>
+                                {% endfor %}
+                            </p>
+                            <p>Date published: {{book.date_published}}</p>
+                            <p class="description"> {{book.book_description|slice:":180"}}...</p>
+                            <a href="#" class="btn btn-warning btn">View book details</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                {% else %}
+                <div class="col-12 text-center">
+                    <p class="error">There are no results for your search, try again with different parameters</p>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="intro end pb-4 pt-2">
+            <h3 class="text-center">Add a new book to the database</h3>
+            <p class="text-center">
+                Can't find a book or need to add a new one to the database?</p>
+            </p>
+            <button class="btn btn-red mt-3" type="submit">Add a new book</button>
+        </div>
+    </div>
+    
+{% endblock %}

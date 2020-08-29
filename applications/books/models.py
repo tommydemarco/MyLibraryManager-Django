@@ -3,6 +3,9 @@ from django.db import models
 #importing the author model
 from applications.authors.models import Author
 
+#importing the manager
+from .managers import BookManager
+
 # books models
 
 #category
@@ -19,6 +22,10 @@ class Book(models.Model):
     book_authors = models.ManyToManyField(Author)
     date_published = models.DateField(auto_now_add=False)
     book_cover = models.ImageField(upload_to='covers')
+    book_description = models.CharField(max_length=600)
+
+    #connecting the manager class
+    objects = BookManager()
 
     def __str__(self):
         return f'{self.book_title}, from {self.book_authors}'

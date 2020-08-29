@@ -4,6 +4,8 @@ from django.views.generic import ListView
 
 from .models import Author 
 
+from django.contrib import messages
+
 #authors view
 class ListAuthorsView(ListView):
     template_name = 'authors/list.html'

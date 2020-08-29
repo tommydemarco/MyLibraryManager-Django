@@ -1,54 +1,65 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}
     <title>Authors list</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Authors list</h1>
 
     <div class="team-boxed">
         <div class="container">
-            <div class="intro">
+            <div class="intro pb-3">
                 <h1 class="text-center">Authors</h1>
-                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
             </div>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="intro col-md-6">
-                    <h3 class="text-center">Search by author name</h3>
+                    <h5 class="text-left mb-3">Search author by name</h5>
                     <form method="GET">
                         {% csrf_token %}
                         <input class="form-control" type="text" id="name" name="name" placeholder="Insert an author name">
-                        <button class="btn btn-custom" type="submit">Search</button>
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
                     </form>
                 </div>
                 <div class="intro col-md-6">
-                    <h3 class="text-center">Search by author surname</h3>
+                    <h5 class="text-left mb-3">Search author by surname</h5>
                     <form method="GET">
                         {% csrf_token %}
                         <input class="form-control" type="text" id="surname" name="surname" placeholder="Insert an author surname">
-                        <button class="btn btn-custom" type="submit">Search</button>
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
                     </form>
                 </div>
             </div>
             <div class="row people">
                 <!-- looping through the authors -->
-                {% for author in authors %}
-
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box"><img class="rounded-circle" src="">
-                        <h3 class="name">{{author.author_name}} {{author.last_name}}</h3>
-                        <p class="title">Author</p>
-                        <p> Author nationality: {{author.author_nationality}}</p>
-                        <p> Author age: {{author.author_age}}</p>
-                        <p class="description"> {{author.author_description}} </p>
-                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                {% if authors.count > 0 %}
+                    {% for author in authors %}
+                    <div class="col-md-6 col-lg-4 item">
+                        <div class="box"><img class="rounded-circle" src="{% static "img/default.png"%}">
+                            <h3 class="name">{{author.author_name}} {{author.last_name}}</h3>
+                            <p class="title">Author</p>
+                            <p class="p1-box"> Author nationality: {{author.author_nationality}}</p>
+                            <p> Author age: {{author.author_age}}</p>
+                            <p class="description"> {{author.author_description}} </p>
+                        </div>
                     </div>
-                </div>
 
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                <div class="col-12 text-center">
+                    <p class="error">There are no results for your search, try again with different parameters</p>
+                </div>
+                {% endif %}
 
             </div>
+        </div>
+        <div class="intro end pb-4 pt-2">
+            <h3 class="text-center">Add a new author to the database</h3>
+            <p class="text-center">
+                Can't find an author or need to add a new one to the database?</p>
+            </p>
+            <button class="btn btn-red mt-3" type="submit">Add a new author</button>
         </div>
     </div>
     

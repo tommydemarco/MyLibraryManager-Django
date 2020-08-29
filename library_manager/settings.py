@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #own applications
     'applications.authors',
     'applications.books',
     'applications.customers',
+    'applications.user',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +77,6 @@ WSGI_APPLICATION = 'library_manager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 
 
 
@@ -116,3 +117,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [Path(__file__).resolve(strict=True).parent.parent.joinpath('static')]

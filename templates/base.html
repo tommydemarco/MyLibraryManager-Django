@@ -15,10 +15,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!--::::: ALL CSS FILES :::::::-->
-    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css"%}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
 
 	<!-- my master CSS -->
 	<link rel="stylesheet" type="text/css" href="{% static "css/main.css"%}">
+
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -27,20 +30,20 @@
 <!-- navigation -->
 <nav id="main-navigation" class="navbar navbar-expand-lg navbar-light bg-white static-top mb-5 shadow">
   <div class="container">
-    <a id="logo" class="navbar-brand" href=""></a>
+    <a id="logo" class="navbar-brand" href="">My Library Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="">Home</a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Add new employee</a>
+          <a class="nav-link" href="{% url 'books:books' %}">Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Add new field</a>
+          <a class="nav-link" href="{% url 'authors:authors' %}">Authors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">Contact support</a>
@@ -68,20 +71,16 @@
   </div>
 </div>
 
-
-
-
 <!-- footer -->
-<footer>
-    <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-    <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
-        <li class="list-inline-item"><a href="#">Services</a></li>
-        <li class="list-inline-item"><a href="#">About</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-    </ul>
-    <p class="copyright">Company Name © 2018</p>
+<footer id="sticky-footer" class="bg-light">
+  <div class="container text-center">
+    My Library Management, a personal portfolio project developed with <a target="_blank" href="https://www.djangoproject.com/">Django</a> by 
+    <a href="https://tommasodemarco.com">Tommaso De Marco</a>
+  </div>
+  <div class="container text-center" style="padding-top:10px">
+    <a href="https://tommasodemarco.com">Cookie Policy</a>
+    <a href="https://tommasodemarco.com">Privacy Policy</a>
+  </div>
 </footer>
 
   
