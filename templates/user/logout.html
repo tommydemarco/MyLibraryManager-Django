@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Logout</title>
+{% endblock %}
+
+{% comment %} <!-- loading the crispy form thing -->
+{% load crispy_forms_tags %} {% endcomment %}
+
+{% block content %}
+  <!-- Title row -->
+  <div class="row mt-3">
+    <div class="col-md-7">
+
+        <div class="heading">
+            <h1 class="widget-title-big mb20">Logout successful</h1>
+        </div>
+        <p class="mb30">
+            You successfully logged out of your account.
+        </p>
+
+        <p class="mt-4" style="margin-bottom:5px">
+            Log back into your account:
+        </p>
+        <a class="btn btn-warning mt-2" href="{% url 'user:login'%}">Login</a>
+            <!-- adding the possibility of signing in if the user already has an account -->
+
+    </div>
+  </div>
+
+  <!--CAROUSEL END-->
+
+<!-- ending the block -->
+{% endblock content %}

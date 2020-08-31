@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">My Library Manager</h1>
+            </div>
+            <div class="row mt-4">
+
+            </div>
+        </div>
+        <div class="intro end pb-4 pt-2 text-center">
+            <h3 class="text-center">Add a new book to the database</h3>
+            <p class="text-center">
+                Can't find a book or need to add a new one to the database?</p>
+            </p>
+            <a class="btn btn-red mt-3" href="{% url 'books:add_new' %}" type="submit">Add a new book</a>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -54,12 +54,12 @@
 
             </div>
         </div>
-        <div class="intro end pb-4 pt-2">
+        <div class="intro end pb-4 pt-2 text-center">
             <h3 class="text-center">Add a new author to the database</h3>
             <p class="text-center">
                 Can't find an author or need to add a new one to the database?</p>
             </p>
-            <button class="btn btn-red mt-3" type="submit">Add a new author</button>
+            <a href="{% url 'authors:add_new' %}" class="btn btn-red mt-3" type="submit">Add a new author</a>
         </div>
     </div>
     

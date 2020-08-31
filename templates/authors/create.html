@@ -3,7 +3,7 @@
 
 
 {% block title %}
-    <title>Add new book</title>
+    <title>Add new author</title>
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     <div class="team-boxed mt-2">
         <div class="container">
             <div class="intro pb-3">
-                <h1 class="text-center">Add a new book</h1>
+                <h1 class="text-center">Add a new author</h1>
             </div>
             <div class="row mt-4 mb-4">
               <div class="col-md-7">
@@ -19,22 +19,18 @@
                     {% csrf_token %}
                     <!-- inserting the create view form-->
                     {{ form.as_p }}
-                    <button class="btn btn-red mt-2" type="submit">Add new book</button>
+                    <button class="btn btn-red mt-2" type="submit">Add new author</button>
                 <form>
               </div>
               <div class="col-md-5">
-                <h5> Fill in the form to insert a new book</h5>
+                <h5> Fill in the form to add a new author</h5>
                 <p>
-                    Add a new book to the database by fillin in the form. Make sure you insert 
-                    all the relavant informationf for the book including Author, genere, date published
-                    and title. </br>
-                    Make sure that the book description is inserted as well.
-                    This should be no longer than 600 charachters and shoould reflect the contents of 
-                    the book as well as including the taget audience.
+                    Add a new author to the database by fillin in the form. </br> Make sure you insert 
+                    all the relavant details about the author. </br>
                     Should you encounter problems adding books to the database you can contact the 
                     support center by filling out the relative form. </br>
                     Note that the support center is available Mon-Fri from 9:00 am to 18 pm. </br>
-                    It may take up to 48 hours for a response, depending on trafic.
+                    It may take up to 48 hours for a response.
                 </p>
                 <a class="btn btn-warning mt-2" type="submit">Contact support center</a>
               </div>

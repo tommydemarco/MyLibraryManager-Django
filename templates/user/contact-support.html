@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% comment %} <!-- loading the crispy form thing -->
+{% load crispy_forms_tags %} {% endcomment %}
+
+{% block content %}
+  <!-- Title row -->
+ <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">Support center</h1>
+            </div>
+            <div class="row mt-4 mb-4">
+              <div class="col-md-7">
+                <!-- inserting the create view form-->
+                <p><label>Employee ID number:</label> <input type="text" name="book_title" placeholder="Enter your employee ID number" class="form-control"></p>
+                <p><label>Technical issue:</label> <textarea type="text" name="book_title" placeholder="Enter a detail description of the technical issue" class="form-control"></textarea></p>
+                <button class="btn btn-red mt-2" >Contact support center</button> 
+                <p class="error mt-4"> WARNING: this is a personal project and there is no actual support center</p>
+              </div>
+              <div class="col-md-5">
+                <h5>The support center is glad to help</h5>
+                <p>
+                  The support center is always glad to help you if you are exoeriencing any 
+                  technical issue. </br>
+                  Please describe carefully the issue that you are facing, specyfing the error 
+                  messages that you see, if any. </br>
+                  Please note that the support center is open from Monday to Friday from 9:00 am
+                  to 18:00 and that it may take up to two working days to process your requet, 
+                  depending on traffic.
+
+                </p>
+              </div>
+            </div>
+        </div>
+    </div>
+
+  <!--CAROUSEL END-->
+
+<!-- ending the block -->
+{% endblock content %}

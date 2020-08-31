@@ -11,7 +11,7 @@ class Author(models.Model):
     author_name = models.CharField(max_length=50)
     author_surname = models.CharField(max_length=50)
     author_nationality = models.CharField(max_length=50)
-    author_age =  models.PositiveIntegerField()
+    #author_age =  models.PositiveIntegerField()
     author_description = models.CharField(max_length=400)
 
     #delegating the request to the database to the manager

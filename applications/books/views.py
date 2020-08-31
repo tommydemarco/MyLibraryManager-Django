@@ -8,10 +8,14 @@ from django.contrib import messages
 
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import AddBook
 
+
+
 #books view
-class ListBooksView(ListView):
+class ListBooksView(LoginRequiredMixin, ListView):
     template_name = 'books/list.html'
     context_object_name = 'books'
 
@@ -40,7 +44,7 @@ class ListBooksView(ListView):
         return context
 
 #create new book
-class AddNewBook(CreateView):
+class AddNewBook(LoginRequiredMixin, CreateView):
     template_name = "books/create.html"
     model = Book
     

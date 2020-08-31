@@ -117,3 +117,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [Path(__file__).resolve(strict=True).parent.parent.joinpath('static')]
+
+
+#adding the redirect page for when the user performs a login
+LOGIN_REDIRECT_URL = 'user:home'
+
+LOGIN_URL = 'user:login-required'
