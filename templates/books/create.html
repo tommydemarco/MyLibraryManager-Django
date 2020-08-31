@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Add new book</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">Add a new book</h1>
+            </div>
+            <div class="row mt-4">
+              <form method="POST" class="add-new-employee-form">
+                {% csrf_token %}
+                <!-- inserting the create view form-->
+                {{ form.as_p }}
+                <button class="btn btn-outline-primary mt-2" type="submit">Add new book</button>
+              <form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

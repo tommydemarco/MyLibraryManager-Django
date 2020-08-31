@@ -7,6 +7,9 @@ from . import views
 app_name = "books"
 
 urlpatterns = [
+    #list views
     path('', views.ListBooksView.as_view(), name="books"),
+    #create views
+    path('add-new/', views.AddNewBook.as_view(), name="add_new"),
 ]
 

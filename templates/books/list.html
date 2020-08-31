@@ -8,14 +8,14 @@
 
 {% block content %}
 
-    <div class="team-boxed">
+    <div class="team-boxed mt-2">
         <div class="container">
             <div class="intro pb-3">
                 <h1 class="text-center">Books</h1>
             </div>
             <div class="row mt-4">
                 <div class="intro col-md-6">
-                    <h5 class="text-left mb-3">Search book by publishing date range</h5>
+                    <h5 class="text-left mb-3">Filter books by publishing date range</h5>
                     <form method="GET">
                         {% csrf_token %}
                         <div class="row">
@@ -26,20 +26,19 @@
                                 <input class="form-control" type="date" id="date2" name="date2" placeholder="Insert second date">
                             </div>
                         </div>
-                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                        <button class="btn btn-warning mt-3" type="submit">Filter</button>
                     </form>
                 </div>
                 <div class="intro col-md-6">
-                    <h5 class="text-left mb-3">Search book by category</h5>
+                    <h5 class="text-left mb-3">Filter book by category</h5>
                     <form method="GET">
                         {% csrf_token %}
-                        <select class="form-control">
-                            <option class="form-control" id="category" name="category">Select a genere</option>
+                        <select class="form-control" id="genere" name="genere">
                             {% for category in categories %}
-                            <option class="form-control" id="category" name="category">{{category}}</option>
+                            <option class="form-control" value="{{category.id}}">{{category.category_name}}</option>
                             {% endfor %}
                         </select>
-                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                        <button class="btn btn-warning mt-3" type="submit">Filter</button>
                     </form>
                 </div>
             </div>
@@ -73,12 +72,12 @@
 
             </div>
         </div>
-        <div class="intro end pb-4 pt-2">
+        <div class="intro end pb-4 pt-2 text-center">
             <h3 class="text-center">Add a new book to the database</h3>
             <p class="text-center">
                 Can't find a book or need to add a new one to the database?</p>
             </p>
-            <button class="btn btn-red mt-3" type="submit">Add a new book</button>
+            <a class="btn btn-red mt-3" href="{% url 'books:add_new' %}" type="submit">Add a new book</a>
         </div>
     </div>
     
