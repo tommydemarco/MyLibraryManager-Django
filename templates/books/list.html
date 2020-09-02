@@ -48,7 +48,7 @@
                     {% for book in books %}
 
                     <div class="col-md-6 col-lg-4 item">
-                        <div class="box"><img class="rounded-circle" src="">
+                        <div class="box">
                             <h3 class="name">{{book.book_title}}</h3>
                             <p class="title">{{book.book_category}}</p>
                             <p class="p1-box"> 
@@ -59,7 +59,7 @@
                             </p>
                             <p>Date published: {{book.date_published}}</p>
                             <p class="description"> {{book.book_description|slice:":180"}}...</p>
-                            <a href="#" class="btn btn-warning btn">View book details</a>
+                            <a href="{% url 'books:book_details' book.id %}" class="btn btn-warning btn">View book details</a>
                         </div>
                     </div>
 

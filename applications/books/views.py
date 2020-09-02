@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 from .models import Book, Category
 
@@ -56,17 +56,31 @@ class AddNewBook(LoginRequiredMixin, CreateView):
     #syntax: 'urls_app_name:url_name'
     success_url = reverse_lazy('books:books')
 
-    #THE FORM VALID  TAKES PLACE AFTER THE FORM HAS BEEN VALIDATED
-    #adding attributes automatically using the method form_valid
     def form_valid(self, form):
-        #saving the information submitted
-        # employee = form.save()
-        # #making the new attruibute to the new instance
-        # employee.full_name = employee.first_name + ' ' + employee.last_name
-        # #saving the outcome
-        # employee.save()
 
         success_message = messages.add_message(self.request, messages.SUCCESS, 
         'The book has been successfully added to the database. You have been redirected to the book list')
         #syntax for returning the result  of the form valid
-        return super(CreateNewEmployee, self).form_valid(form)
+        return super(AddNewBook, self).form_valid(form)
+
+
+#book details
+class BookDetailsView(LoginRequiredMixin, DetailView):
+    template_name = 'books/book-details.html'
+    model = Book
+
+
+#edit book details 
+class EditBookDetailsView(LoginRequiredMixin, UpdateView):
+    template_name = 'books/edit-details.html'
+    model = Book
+
+    form_class = AddBook
+
+    success_url = reverse_lazy('books:books')
+
+    def form_valid(self, form):
+
+        success_message = messages.add_message(self.request, messages.SUCCESS, 
+        'The book details have been successfully updated. You have been redirected to the book list')
+        return super(EditBookDetailsView, self).form_valid(form)

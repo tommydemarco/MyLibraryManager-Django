@@ -18,8 +18,12 @@
 #body .btn-white:hover {color: white;margin-left: 10px;background: transparent;}
 
 @media (min-width: 992px){
-  #main-container {min-height:420px!important}
+  #main-container {min-height:385px!important}
 }
+
+/*=== HOME PAGE 4 BOXES MODIFICATIONS ===*/
+.image-aside{max-width: 90px;}
+.image-aside-box{float: left;  max-width: 90px; margin-right:15px}
 
 /*=== AUTHORS MODIFICATIONS ===*/
 .team-boxed {
@@ -113,10 +117,59 @@
   opacity:1;
 }
 
+/*============================== table ==============================*/
+.table-responsive-stack tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+
+.table-responsive-stack td,
+.table-responsive-stack th {
+   display:block;
+   font-weight:400;
+/*      
+   flex-grow | flex-shrink | flex-basis   */
+   -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.table-responsive-stack .table-responsive-stack-thead {
+   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+   .table-responsive-stack tr {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      border-bottom: 3px solid #ccc;
+      display:block;
+      
+   }
+   /*  IE9 FIX   */
+   .table-responsive-stack td {
+      float: left\9;
+      width:100%;
+   }
+}
+
+.table .thead-dark th {
+  color: #fff;
+  border-color: #2c3e50;
+  background:#34495e;
+}
+
 #body .p1-box {margin-bottom:0px}
 
 /*=== FOOTER MODIFICATIONS ===*/
-#body #sticky-footer {padding-top:40px; padding-bottom:40px; background: url('../img/2.jpg');
+#body #sticky-footer {padding-top:40px; padding-bottom:25px; background: url('../img/2.jpg');
 color:rgb(212, 212, 212); }
 
 #body #sticky-footer a {color:white;}

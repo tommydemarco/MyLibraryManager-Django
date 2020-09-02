@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Customers list</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">Customers</h1>
+            </div>
+            <div class="row mt-4">
+                <div class="intro col-md-6">
+                    <h5 class="text-left mb-3">Search customer by name</h5>
+                    <form method="GET">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Insert a customer name">
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="intro col-md-6">
+                    <h5 class="text-left mb-3">Search customer by surname</h5>
+                    <form method="GET">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" id="surname" name="surname" placeholder="Insert a customer surname">
+                        <button class="btn btn-warning mt-3" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row people">
+                <!-- looping through the books -->
+                <table class="table table-bordered table-striped table-responsive-stack mt-4"  id="tableOne">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Address</th>
+                            <th>Current landing</th>
+                            <th>Landing details</th>
+                        </tr>
+                    </thead>
+                    </tbody>
+                    {% if customers.count > 0 %}
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{customer.customer_name}}</td>
+                            <td>{{customer.customer_surname}}</td>
+                            <td>{{customer.customer_address}}</td>
+                            <td>
+                              {% if customer.customer_landing.count > 0 %}
+                                {% for landing in customer.customer_landing.all %} 
+                                    {{landing.book}} 
+                                {% endfor %} 
+                              {% else %}
+                                None
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if customer.customer_landing.count > 0 %}
+                                {% for landing in customer.customer_landing.all %} 
+                                    <a href="#"> Landing details </a>
+                                {% endfor %} 
+                              {% else %}
+                                No details available
+                              {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12 text-center">
+                            <p class="error">There are no results for your search, try again with different parameters</p>
+                        </div>
+                    {% endif %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="intro end pb-4 pt-2 text-center">
+            <h3 class="text-center">Add a new customer</h3>
+            <p class="text-center">
+                Need to add a new customer to the database?</p>
+            </p>
+            <a class="btn btn-red mt-3" href="{% url 'customers:add_new' %}" type="submit">Add a new customer</a>
+        </div>
+    </div>
+    
+{% endblock %}

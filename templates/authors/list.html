@@ -36,7 +36,7 @@
                 {% if authors.count > 0 %}
                     {% for author in authors %}
                     <div class="col-md-6 col-lg-4 item">
-                        <div class="box"><img class="rounded-circle" src="{% static "img/default.png"%}">
+                        <div class="box">
                             <h3 class="name">{{author.author_name}} {{author.last_name}}</h3>
                             <p class="title">Author</p>
                             <p class="p1-box"> Author nationality: {{author.author_nationality}}</p>

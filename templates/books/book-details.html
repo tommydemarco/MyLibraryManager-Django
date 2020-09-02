@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Books details</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">{{object.book_title}}</h1>
+                <h4 class="text-center"> Book Details </h4>
+            </div>
+            <div class="row people" style="padding-bottom: 20px; padding-top:20px;">
+                <!-- looping through the books -->
+                <div class="col-12 item">
+                    <div class="box box-grande">
+                        <div class="row">
+                            <div class="col-lg-4 text-left">
+                                <h5>Book information:</h5>
+                                <p class="title">Category: {{object.book_category}}</p>
+                                <p class="p1-box"> 
+                                    Author: 
+                                    {% for author in object.book_author.all %}
+                                        <b>{{author}}</b>
+                                    {% endfor %}
+                                </p>
+                                <p>Date published: {{object.date_published}}</p>
+                                <p>
+                                Status of the books:
+                                {% for element in object.book_landing.all %}
+                                    {{ element.book_returned }}
+                                {% endfor %}
+                                </p>
+                            </div>
+                            <div class="col-lg-8 text-left">
+                                <h5>Book description:</h5>
+                                <p class="description"> {{object.book_description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="intro end pb-4 pt-2 text-center">
+            <h3 class="text-center">Edit the details of this book</h3>
+            <p class="text-center">
+                Click the button below to modify the details of the book in the database.</p>
+            </p>
+            <a class="btn btn-red mt-3" href="{% url 'books:edit_book_details' object.id %}">Edit details</a>
+        </div>
+    </div>
+    
+{% endblock %}

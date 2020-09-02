@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Add new customer</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="team-boxed mt-2">
+        <div class="container">
+            <div class="intro pb-3">
+                <h1 class="text-center">Add a new customer</h1>
+            </div>
+            <div class="row mt-4 mb-4">
+              <div class="col-md-7">
+                <form method="POST" class="add-new-employee-form">
+                    {% csrf_token %}
+                    <!-- inserting the create view form-->
+                    {{ form.as_p }}
+                    <button class="btn btn-red mt-2" type="submit">Add new customer</button>
+                <form>
+              </div>
+              <div class="col-md-5">
+                <h5> Fill in the form to add a new customer</h5>
+                <p>
+                    Add a new customer to the database by filling in the form. </br>
+                    Should you encounter problems adding books to the database you can contact the 
+                    support center by filling out the relative form. </br>
+                    Note that the support center is available Mon-Fri from 9:00 am to 18 pm.
+                    It may take up to 48 hours for a response.
+                </p>
+                <a class="btn btn-warning mt-2" type="submit">Contact support center</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

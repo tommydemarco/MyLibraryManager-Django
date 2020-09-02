@@ -21,12 +21,14 @@ class Book(models.Model):
     book_title = models.CharField(max_length=50)
     book_author = models.ManyToManyField(Author)
     date_published = models.DateField(auto_now_add=False)
-    book_cover = models.ImageField(upload_to='covers')
+    #book_cover = models.ImageField(upload_to='covers')
     book_description = models.TextField(max_length=600)
 
     #connecting the manager class
     objects = BookManager()
 
     def __str__(self):
-        return f'{self.book_title}, from {self.book_authors}'
+        author_list = self.book_author.all()
+        author_list = list(author_list)
+        return f'{self.book_title}'
 

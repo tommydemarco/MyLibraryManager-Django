@@ -13,16 +13,56 @@
             <div class="intro pb-3">
                 <h1 class="text-center">My Library Manager</h1>
             </div>
-            <div class="row mt-4">
-
+            <div class="row my-5">
+                <div class="col-md-4">
+                    <div class="image-aside-box">
+                        <img class="image-aside" src="{% static "img/open-source.png"%}">
+                    </div>
+                    <div class="par-text">
+                        <h4>Manage returns</h4>
+                        <p>
+                            Manange the curtomer returns in a simple way, that you can easily access and modify.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-aside-box">
+                        <img class="image-aside" src="{% static "img/domino.png"%}">
+                    </div>
+                    <div class="par-text">
+                        <h4>Easy to use </h4>
+                        <p>Intuitive design and easy to use, data imput will become a pleasure.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-aside-box">
+                        <img class="image-aside" src="{% static "img/checklist.png"%}">
+                    </div>
+                    <div class="par-text">
+                        <h4>Insert and modify</h4>
+                        <p>
+                            Insert new books / authors / customer details into the database. 
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="intro end pb-4 pt-2 text-center">
-            <h3 class="text-center">Add a new book to the database</h3>
+          {% if not user.is_authenticated %}
+            <h5 class="text-center">Log in to access the contents</h5>
             <p class="text-center">
-                Can't find a book or need to add a new one to the database?</p>
+                You need to log in to access the books database and the functionalities of 
+                the application
             </p>
-            <a class="btn btn-red mt-3" href="{% url 'books:add_new' %}" type="submit">Add a new book</a>
+            <a class="btn btn-red mt-3" href="{% url 'user:login-required' %}">Login</a>
+          {% else %}
+            <h5 class="text-center">You are already logged in</h5>
+            <p class="text-center">
+                Go ahead and bwrowse through the section of the library manager 
+            </p>
+            <a class="btn btn-red mt-3 ml-2 mr-2" href="{% url 'books:books' %}">Book section</a>
+            <a class="btn btn-red mt-3 ml-2 mr-2" href="{% url 'authors:authors' %}">Authors section</a>
+          {% endif %}
         </div>
     </div>
     
