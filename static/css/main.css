@@ -13,6 +13,9 @@
 #body .btn-red{background: #e74c3c;border: 3px solid #e74c3c; color:white}
 #body .btn-red:hover {background: #c0392b;border: 3px solid #c0392b;}
 #body .error {color:#c0392b; font-size:18px}
+#body .btn-outline-primary {border: 1px solid #e74c3c; color:#e74c3c}
+#body .btn-outline-primary:hover {background-color:#e74c3c; color:white}
+.alert {border-radius: 0px;}
 
 #body .btn-white {color: #a32f22;margin-left: 10px;background: white; border:2px solid white}
 #body .btn-white:hover {color: white;margin-left: 10px;background: transparent;}

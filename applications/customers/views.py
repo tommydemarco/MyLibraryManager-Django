@@ -17,6 +17,7 @@ class ListCustomers(LoginRequiredMixin, ListView):
     template_name = 'customers/list.html'
     model = Customer
     context_object_name = 'customers'
+    paginate_by = 3
 
     def get_queryset(self):
 
@@ -58,6 +59,7 @@ class ListActiveLandings(LoginRequiredMixin, ListView):
     template_name = 'customers/list-landings.html'
     model = Landing
     context_object_name = 'active_landings'
+    paginate_by = 1
 
     def get_queryset(self):
 
@@ -72,6 +74,7 @@ class ListReturnedLandings(LoginRequiredMixin, ListView):
     template_name = 'customers/list-returned-landings.html'
     model = Landing
     context_object_name = 'returned_landings'
+    paginate_by = 1
 
     def get_queryset(self):
         return Landing.objects.list_returned_landings()

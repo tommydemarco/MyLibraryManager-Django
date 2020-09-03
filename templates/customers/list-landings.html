@@ -26,7 +26,11 @@
                     <h5 class="text-left mb-3">Search active landing by book</h5>
                     <form method="GET">
                         {% csrf_token %}
-                        <input class="form-control" type="text" id="book" name="book" placeholder="Insert the name of a book">
+                        <select class="form-control" id="book" name="book">
+                          {% for landing in active_landings %}
+                            <option value="{{landing.book.id}}" class="form-control">{{landing.book}}</option>
+                          {% endfor %}
+                        </select>
                         <button class="btn btn-warning mt-3" type="submit">Search</button>
                     </form>
                 </div>
@@ -63,7 +67,38 @@
                     {% endif %}
                     </tbody>
                 </table>
+                <!-- pagination -->
+                {% if is_paginated %}
+                <nav class="blog-pagination mt-4">
+                    <!-- checking if the current page has previous pages-->
+                    {% if page_obj.has_previous and page_obj.has_next %}
 
+                    <!-- getting the first page of pagination -->
+                    <a class="btn btn-outline-primary mr-1" href="?page=1">First page</a>
+
+                    <!-- getting the previous page of pagination -->
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.previous_page_number }}"> < </a>
+
+                    <!-- getting to the next page -->
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.next_page_number }}"> > </a>
+
+                    <!-- getting the last page of pagination -->
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.paginator.num_pages }}"> Last page </a>
+
+                    {% elif page_obj.has_previous and not page_obj.has_next%}
+                    <a class="btn btn-outline-primary mr-1" href="?page=1">First page</a>
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.previous_page_number }}"> < </a>
+                    <a class="btn btn-outline-secondary disabled mr-1" href="#" tabindex="-1" aria-disabled="true"> > </a>
+                    <a class="btn btn-outline-secondary disabled mr-1" href="#" tabindex="-1" aria-disabled="true"> Last page </a>
+                    {% else %}
+                    <a class="btn btn-outline-secondary disabled mr-1" href="#" tabindex="-1" aria-disabled="true">First page</a>
+                    <a class="btn btn-outline-secondary disabled mr-1" href="#" tabindex="-1" aria-disabled="true"> < </a>
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.next_page_number }}"> > </a>
+                    <a class="btn btn-outline-primary mr-1" href="?page={{ page_obj.paginator.num_pages }}"> Last page </a>
+                    {% endif %}
+                </nav>
+            {% endif %}
+            <!-- pagination end -->
             </div>
         </div>
         <div class="intro end pb-4 pt-2 text-center">

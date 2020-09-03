@@ -7,7 +7,7 @@ from .managers import AuthorManager
 
 class Author(models.Model):
     """model for the authors"""
-
+    
     author_name = models.CharField(max_length=50)
     author_surname = models.CharField(max_length=50)
     author_nationality = models.CharField(max_length=50)
